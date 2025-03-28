@@ -156,6 +156,8 @@ class _WeatherDashboardPageState extends State<WeatherDashboardPage> {
                             ),
                           ),
                           const SizedBox(width: 12),
+
+                          //Switch between Celsius and Fahrenheit
                           Switch(
                             activeColor: Colors.white,
                             activeTrackColor: Colors.blueGrey,
