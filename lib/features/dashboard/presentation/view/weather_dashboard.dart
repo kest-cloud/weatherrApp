@@ -111,9 +111,7 @@ class _WeatherDashboardPageState extends State<WeatherDashboardPage> {
                   ),
                   const SizedBox(height: 10),
                   Text(
-                    state.isCelsius!
-                        ? '${state.weatherData?.main?.temp ?? ""}°'
-                        : "${state.temp}°" ?? "",
+                    '${state.weatherData?.main?.temp ?? ""}°',
                     style: const TextStyle(
                       fontSize: 16,
                       fontFamily: "CircularStd",
@@ -163,14 +161,12 @@ class _WeatherDashboardPageState extends State<WeatherDashboardPage> {
                             activeTrackColor: Colors.blueGrey,
                             inactiveThumbColor: Colors.grey,
                             inactiveTrackColor: Colors.blueGrey,
-                            value: state.isCelsius!,
+                            value: !state.isCelsius!,
                             onChanged: (bool value) {
                               Logger(value);
                               context
                                   .read<WeatherBlocNotifier>()
                                   .add(ToggleTemperatureUnitEvent());
-                              state.isCelsius = !state.isCelsius!;
-                              setState(() {});
                             },
                           ),
                         ],

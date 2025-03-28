@@ -1,6 +1,7 @@
 # weatherapp
 
-📱 Project Name
+📱 Project Name : Weather App
+
 🌟 Project Overview
 This Flutter application is developed using clean architecture principles, focusing on separation of concerns and maintainability.
 
@@ -16,17 +17,18 @@ Initial Project Creation
     │
     ├── lib/
     │   ├── core/
-    │   │   ├── constants/
-    │   │   ├── networkhandler/
+    │   │   ├── assets/
+    │   │   ├── di-manual/
+    |   |   ├── networkhandler/
     │   │   └── utils/
     │   │
     │   ├── features/
     │   │   ├── dashboard/
     │   │   │   ├── data/
     │   │   │   │   ├── datasource/
-    │   │   │   ├── domain/
-    │   │   │   │   ├── entities/
-    │   │   │   │   ├── repositories/
+    │   │   │   |   ├── domain/
+    │   │   │   │     ├── entities/
+    │   │   │   │     ├── repositories/
     │   │   │   └── presentation/
     │   │   │       ├── notifier/
     │   │   │       ├── view/
@@ -34,7 +36,7 @@ Initial Project Creation
     │   │
     │   └── main.dart
     |   |
-    │   ├── Test/
+    │   ├── test/
     |
     ├── pubspec.yaml
     └── README.md
@@ -66,7 +68,8 @@ presentation/: UI components, state management
 
 🔽 Clone the repository
 📦 Run flutter pub get
-🔧 Configure your environment variables
+🔧 Configure your environment variables (I will share my .env)
+ .env --- https://drive.google.com/file/d/1pTND7I0DPsCMFr56u5228i4XNM1l-gBg/view?usp=sharing
 🚀 Run the app with flutter run
 
 📝 Development Notes

@@ -48,6 +48,38 @@ class WeatherResponse {
       cod: json['cod'],
     );
   }
+
+  WeatherResponse copyWith({
+    Coord? coord,
+    List<Weather>? weather,
+    String? base,
+    MainWeather? main,
+    int? visibility,
+    Wind? wind,
+    Clouds? clouds,
+    int? dt,
+    Sys? sys,
+    int? timezone,
+    int? id,
+    String? name,
+    int? cod,
+  }) {
+    return WeatherResponse(
+      coord: coord ?? this.coord,
+      weather: weather ?? this.weather,
+      base: base ?? this.base,
+      main: main ?? this.main,
+      visibility: visibility ?? this.visibility,
+      wind: wind ?? this.wind,
+      clouds: clouds ?? this.clouds,
+      dt: dt ?? this.dt,
+      sys: sys ?? this.sys,
+      timezone: timezone ?? this.timezone,
+      id: id ?? this.id,
+      name: name ?? this.name,
+      cod: cod ?? this.cod,
+    );
+  }
 }
 
 class Coord {
@@ -60,6 +92,16 @@ class Coord {
     return Coord(
       lon: (json['lon'] as num?)?.toDouble(),
       lat: (json['lat'] as num?)?.toDouble(),
+    );
+  }
+
+  Coord copyWith({
+    double? lon,
+    double? lat,
+  }) {
+    return Coord(
+      lon: lon ?? this.lon,
+      lat: lat ?? this.lat,
     );
   }
 }
@@ -78,6 +120,20 @@ class Weather {
       main: json['main'],
       description: json['description'],
       icon: json['icon'],
+    );
+  }
+
+  Weather copyWith({
+    int? id,
+    String? main,
+    String? description,
+    String? icon,
+  }) {
+    return Weather(
+      id: id ?? this.id,
+      main: main ?? this.main,
+      description: description ?? this.description,
+      icon: icon ?? this.icon,
     );
   }
 }
@@ -115,6 +171,28 @@ class MainWeather {
       grndLevel: json['grnd_level'],
     );
   }
+
+  MainWeather copyWith({
+    double? temp,
+    double? feelsLike,
+    double? tempMin,
+    double? tempMax,
+    int? pressure,
+    int? humidity,
+    int? seaLevel,
+    int? grndLevel,
+  }) {
+    return MainWeather(
+      temp: temp ?? this.temp,
+      feelsLike: feelsLike ?? this.feelsLike,
+      tempMin: tempMin ?? this.tempMin,
+      tempMax: tempMax ?? this.tempMax,
+      pressure: pressure ?? this.pressure,
+      humidity: humidity ?? this.humidity,
+      seaLevel: seaLevel ?? this.seaLevel,
+      grndLevel: grndLevel ?? this.grndLevel,
+    );
+  }
 }
 
 class Wind {
@@ -129,6 +207,16 @@ class Wind {
       deg: json['deg'],
     );
   }
+
+  Wind copyWith({
+    double? speed,
+    int? deg,
+  }) {
+    return Wind(
+      speed: speed ?? this.speed,
+      deg: deg ?? this.deg,
+    );
+  }
 }
 
 class Clouds {
@@ -139,6 +227,12 @@ class Clouds {
   factory Clouds.fromJson(Map<String, dynamic> json) {
     return Clouds(
       all: json['all'],
+    );
+  }
+
+  Clouds copyWith({int? all}) {
+    return Clouds(
+      all: all ?? this.all,
     );
   }
 }
@@ -159,6 +253,22 @@ class Sys {
       country: json['country'],
       sunrise: json['sunrise'],
       sunset: json['sunset'],
+    );
+  }
+
+  Sys copyWith({
+    int? type,
+    int? id,
+    String? country,
+    int? sunrise,
+    int? sunset,
+  }) {
+    return Sys(
+      type: type ?? this.type,
+      id: id ?? this.id,
+      country: country ?? this.country,
+      sunrise: sunrise ?? this.sunrise,
+      sunset: sunset ?? this.sunset,
     );
   }
 }

@@ -19,8 +19,7 @@ class WeatherRepositoryImpl implements WeatherRepository {
       } else {
         return Left(
           Failure(
-            message: response.statusMessage.toString() ??
-                "Failed to fetch weather data",
+            message: response.statusMessage.toString(),
             data: response.statusMessage.toString(),
           ),
         );

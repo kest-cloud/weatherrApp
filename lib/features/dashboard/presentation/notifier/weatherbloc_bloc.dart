@@ -32,9 +32,13 @@ class WeatherBlocNotifier extends Bloc<WeatherEvent, WeatherState> {
             status: WeatherStatus.error,
             errorMessage: failure.data.toString()));
       }, (right) async {
-        Logger(right);
+        // Logger(right);
         // when the data comes back with a value
-        emit(state.copyWith(status: WeatherStatus.loaded, weatherData: right));
+        emit(state.copyWith(
+          status: WeatherStatus.loaded,
+          weatherData: right,
+          isCelsius: state.isCelsius,
+        ));
       });
     } catch (error) {
       // Emit error state with error message
@@ -46,18 +50,26 @@ class WeatherBlocNotifier extends Bloc<WeatherEvent, WeatherState> {
 // Toggle Temperature Unit Method
   void _onToggleTemperatureUnit(
       ToggleTemperatureUnitEvent event, Emitter<WeatherState> emit) {
-    // Toggle unit and update temperature accordingly
+    // Toggle the unit
     bool newIsCelsius = !state.isCelsius!;
-    double newTemperature = newIsCelsius
-        ? (state.weatherData!.main!.temp! - num.parse("32")) *
-            5 /
-            9 // Convert to Celsius
-        : (state.weatherData!.main!.temp! * 9 / 5) +
-            32; // Convert to Fahrenheit
 
-    emit(state.copyWith(
-      isCelsius: newIsCelsius,
-      temp: newTemperature.toString(),
-    ));
+    // Store the original temperature values
+    double celsiusValue = (state.weatherData!.main!.temp! - 32) * 5 / 9;
+    double fahrenheitValue = (state.weatherData!.main!.temp! * 9 / 5) + 32;
+
+    // Determine the temperature based on the selected unit
+    double newTemperature = newIsCelsius ? celsiusValue : fahrenheitValue;
+
+    // Emit the new state
+    emit(
+      state.copyWith(
+        isCelsius: newIsCelsius,
+        weatherData: state.weatherData?.copyWith(
+          main: state.weatherData!.main!.copyWith(
+            temp: newTemperature,
+          ),
+        ),
+      ),
+    );
   }
 }
