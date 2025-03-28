@@ -82,3 +82,9 @@ presentation/: UI components, state management
 
 Test
 flutter test
+
+
+Flutter 3.27.4 • channel stable • https://github.com/flutter/flutter.git
+Framework • revision d8a9f9a52e (8 weeks ago) • 2025-01-31 16:07:18 -0500
+Engine • revision 82bd5b7209
+Tools • Dart 3.6.2 • DevTools 2.40.3
