@@ -84,7 +84,7 @@ class _WeatherDashboardPageState extends State<WeatherDashboardPage> {
             SizedBox(height: 70),
             ResponsiveImage(width: 350),
             // You can adjust the width to show the difference in aspect ratio for the image.
-            // as instruted.
+            // as instructed.
             SizedBox(height: 25),
             // Title
             const Text(
