@@ -111,7 +111,7 @@ class _WeatherDashboardPageState extends State<WeatherDashboardPage> {
                   ),
                   const SizedBox(height: 10),
                   Text(
-                    '${state.weatherData?.main?.temp ?? ""}°',
+                    '${state.weatherData?.main?.temp?.toStringAsFixed(2) ?? ""}°',
                     style: const TextStyle(
                       fontSize: 16,
                       fontFamily: "CircularStd",
