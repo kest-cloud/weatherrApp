@@ -32,11 +32,17 @@ class WeatherBlocNotifier extends Bloc<WeatherEvent, WeatherState> {
             status: WeatherStatus.error,
             errorMessage: failure.data.toString()));
       }, (right) async {
-        // Logger(right);
-        // when the data comes back with a value
+        //  convert kelvine to celsius
+        double kelvinValue = right.main!.temp!;
+        double celsiusValue = kelvinValue - 273.15;
+
         emit(state.copyWith(
           status: WeatherStatus.loaded,
-          weatherData: right,
+          weatherData: right.copyWith(
+            main: right.main!.copyWith(
+              temp: celsiusValue,
+            ),
+          ),
           isCelsius: state.isCelsius,
         ));
       });
